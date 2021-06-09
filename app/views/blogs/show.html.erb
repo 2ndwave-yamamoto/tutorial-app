@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<!-- h1タグでタイトルを表示 -->
+<h1><%= @blog.title %></h1>
+
+<!-- 本文を表示 -->
+<%= simple_format(@blog.body) %>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>

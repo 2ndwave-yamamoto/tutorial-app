@@ -10,6 +10,11 @@
       </ul>
     </div>
   <% end %>
+  <!-- タイトルを入力するinputタグを表示 -->
+  <label for="blog_title">タイトル</label><%= form.text_field :title %>
+
+  <!-- 本文入力するtextareタグを表示 -->
+  <label for="blog_body">本文</label><%= form.text_area :body, rows: 5 %>
 
   <div class="actions">
     <%= form.submit %>

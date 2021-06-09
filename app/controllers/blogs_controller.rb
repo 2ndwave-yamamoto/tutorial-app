@@ -7,7 +7,12 @@ class BlogsController < ApplicationController
   end
 
   # GET /blogs/1 or /blogs/1.json
+  before_action :set_blog, only: %i[ show edit update destroy ]
   def show
+  end
+
+  def set_blog
+  @blog = Blog.find(params[:id])
   end
 
   # GET /blogs/new
@@ -22,7 +27,6 @@ class BlogsController < ApplicationController
   # POST /blogs or /blogs.json
   def create
     @blog = Blog.new(blog_params)
-
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: "Blog was successfully created." }
@@ -64,6 +68,7 @@ class BlogsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blog_params
-      params.fetch(:blog, {})
+    # titleとbodyを受け取る
+    params.fetch(:blog, {}).permit(:title, :body)
     end
 end
