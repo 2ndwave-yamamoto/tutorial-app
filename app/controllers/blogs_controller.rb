@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.search(params).order(created_at: :desc)
   end
 
   # GET /blogs/1 or /blogs/1.json
@@ -21,7 +21,12 @@ class BlogsController < ApplicationController
   end
 
   # GET /blogs/1/edit
+  before_action :set_blog, only: %i[ show edit update destroy ]
   def edit
+  end
+
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 
   # POST /blogs or /blogs.json

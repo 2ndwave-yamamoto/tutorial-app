@@ -6,5 +6,13 @@
 <!-- 本文を表示 -->
 <%= simple_format(@blog.body) %>
 
+<%= tag.div id: :comments_area do %>
+    <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
+  <% end %>
+
+<%= tag.div id: :comment_form do %>
+    　<%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
+    <% end %>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
+

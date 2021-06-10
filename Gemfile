@@ -68,3 +68,5 @@ group :development do
   end
 
   gem 'annotate'
+
+  gem 'rails-i18n'

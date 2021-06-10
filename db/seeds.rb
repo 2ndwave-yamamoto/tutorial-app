@@ -6,3 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Blog.destroy_all
+5.times do |i|
+  blog = Blog.create(title: "テストデータ#{i}", body: "本文は１０文字以上が必要#{i}")
+  5.times do |j|
+    blog.comments.create(body: "コメント本文は必須 #{j}")
+  end
+end
