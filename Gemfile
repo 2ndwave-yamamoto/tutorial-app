@@ -68,5 +68,9 @@ group :development do
   end
 
   gem 'annotate'
-
+ 
+  #日本語化を行うgem
   gem 'rails-i18n'
+
+  #ハッシュ化を行うgem
+  gem 'bcrypt',  '3.1.12'

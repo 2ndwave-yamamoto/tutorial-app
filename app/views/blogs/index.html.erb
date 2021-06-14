@@ -2,6 +2,12 @@
 
 <h1>Blogs</h1>
 
+<!-- 検索の追加 -->
+    <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
+  <label for="search_title"><%= t('activerecord.attributes.blog.title') %></label><%= form.text_field :search_title, value: params[:search_title] %>
+  <%= submit_tag t('search'), name: nil %>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -10,11 +16,7 @@
   </thead>
 
   <tbody>
-        <!-- 検索の追加 -->
-        <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
-          <label for="search_title"><%= t('activerecord.attributes.blog.title') %></label><%= form.text_field :search_title, value: params[:search_title] %>
-          <%= submit_tag 'Search', name: nil %>
-        <% end %>
+        
     <% @blogs.each do |blog| %>
       
       <tr>
@@ -22,9 +24,9 @@
         <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
         <!-- タイトルを追加 -->
         <td><%= blog.title %></td>
-        <td><%= link_to 'Show', blog %></td>
-        <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('show'), blog %></td>
+        <td><%= link_to t('edit'), edit_blog_path(blog) %></td>
+        <td><%= link_to t('destroy'), blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to t('new_blog'), new_blog_path %>
