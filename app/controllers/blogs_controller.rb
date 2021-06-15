@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: %i[ show edit update destroy ]
+  before_action :logged_in_user, only: %i[ edit update destroy ]
+  #before_action :set_blog, only: %i[ show edit update destroy ]
 
   # GET /blogs or /blogs.json
   def index
@@ -17,6 +18,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
+    
     @blog = Blog.new
   end
 
@@ -75,5 +77,10 @@ class BlogsController < ApplicationController
     def blog_params
     # titleとbodyを受け取る
     params.fetch(:blog, {}).permit(:title, :body)
+    end
+
+    def user_id
+    #ユーザidを受け取る
+    user = User.find_by(name: params[:session][:name])
     end
 end

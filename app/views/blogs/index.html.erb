@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Blogs</h1>
+<!-- ログイン -->
 
 <!-- 検索の追加 -->
     <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
@@ -35,3 +36,4 @@
 <br>
 
 <%= link_to t('new_blog'), new_blog_path %>
+<%= link_to t('logout'), logout_path, method: :delete %>

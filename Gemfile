@@ -74,3 +74,6 @@ group :development do
 
   #ハッシュ化を行うgem
   gem 'bcrypt',  '3.1.12'
+
+  #レコードのPV数を計測
+  gem 'impressionist', '~>1.6.1'

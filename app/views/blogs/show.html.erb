@@ -6,6 +6,8 @@
 <!-- 本文を表示 -->
 <%= simple_format(@blog.body) %>
 
+
+
 <%= tag.div id: :comments_area do %>
     <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
   <% end %>
@@ -15,4 +17,4 @@
     <% end %>
 <%= link_to t('edit'), edit_blog_path(@blog) %> |
 <%= link_to t('back'), blogs_path %>
-
+<%= link_to t('logout'), logout_path, method: :delete %>

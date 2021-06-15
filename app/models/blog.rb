@@ -7,6 +7,7 @@
 #  title(タイトル) :string(255)      not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  user_id         :integer
 #
 class Blog < ApplicationRecord
     validates :title, presence: true, length: { minimum: 1, maximum: 50}
