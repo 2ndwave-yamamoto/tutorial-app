@@ -1,0 +1,16 @@
+<%= form_with model: comment do |form| %>
+    <% if comment.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= label_tag 'comment[body]', t('activerecord.attributes.comment.body') %><%= form.text_area :body, row: 3 %>
+    <%= form.hidden_field :blog_id %>
+    <div class="actions">
+      <%= form.submit t("labels.comment_submit") %>
+    </div>
+  <% end %>

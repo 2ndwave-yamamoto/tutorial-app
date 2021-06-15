@@ -1,0 +1,24 @@
+ja:
+  logout: ログアウト
+  search: 検索
+  show: 詳細
+  edit: 編集
+  destroy: 削除
+  back: 一覧
+  new_blog: 新規作成
+  activerecord:
+    models:
+      blog: 記事
+    attributes:
+      blog:
+        title: タイトル
+        body: 本文
+        blog_submit_tag: 検索
+      comment:
+        body: コメント本文
+  labels:
+    comment_submit: コメント投稿
+    
+    
+    
+  
