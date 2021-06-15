@@ -1,3 +1,2 @@
-module BlogsHelper
-    
+module BlogsHelper   
 end
