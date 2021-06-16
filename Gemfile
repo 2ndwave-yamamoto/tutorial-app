@@ -77,3 +77,9 @@ group :development do
 
   #レコードのPV数を計測
   gem 'impressionist', '~>1.6.1'
+
+  #デバッガ
+  group :development do
+  gem 'pry-byebug'
+  gem 'pry-rails'
+  end 

@@ -2,7 +2,7 @@
 
 <h1>Blogs</h1>
 <!-- ログインユーザ -->
-
+現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
 <!-- 検索の追加 -->
     <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
   <label for="search_title"><%= t('activerecord.attributes.blog.title') %></label><%= form.text_field :search_title, value: params[:search_title] %>
