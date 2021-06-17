@@ -13,7 +13,11 @@ class Blog < ApplicationRecord
     validates :title, presence: true, length: { minimum: 1, maximum: 50}
     validates :body, presence: true, length: { minimum:10, maximum: 5000 }
     has_many :comments
+    has_many :likes, dependent: :destroy
 
+    # ページカウント
+    is_impressionable counter_cache: true
+    
     #検索機能
     scope :search, -> (params) do
         scope = self

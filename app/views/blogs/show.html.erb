@@ -7,15 +7,18 @@
 <!-- 本文を表示 -->
 <%= simple_format(@blog.body) %>
 
+<!-- いいねの表示 -->
+<%= button_to 'いいね' %>
 
 
 <%= tag.div id: :comments_area do %>
-    <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
-  <% end %>
+  <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
+<% end %>
 
 <%= tag.div id: :comment_form do %>
-    　<%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
-    <% end %>
+  <%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
+<% end %>
+
 <%= link_to t('edit'), edit_blog_path(@blog) %> |
 <%= link_to t('back'), blogs_path %>
 <%= link_to t('logout'), logout_path, method: :delete %>
