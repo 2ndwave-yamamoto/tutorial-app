@@ -76,8 +76,8 @@ group :development do
   gem 'bcrypt',  '3.1.12'
 
   #レコードのPV数を計測
-  gem 'impressionist', '~>1.6.1'
-
+  # gem 'impressionist', '~>1.6.1'
+  gem 'impressionist', git: 'https://github.com/charlotte-ruby/impressionist.git'
   #デバッガ
   group :development do
   gem 'pry-byebug'

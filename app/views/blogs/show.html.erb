@@ -14,6 +14,8 @@
   <%= button_to 'いいね', blog_likes_path(@blog),class: 'btn btn-success', remote: true %>
 <% end %>
 いいね数：<%= @blog.likes.count %>
+
+<!-- コメント -->
 <%= tag.div id: :comments_area do %>
   <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
 <% end %>
@@ -21,6 +23,11 @@
 <%= tag.div id: :comment_form do %>
   <%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
 <% end %>
+
+<!-- 閲覧数 -->
+<strong>閲覧数:</strong>
+<%= @blog.impressions_count %>
+<br>
 
 <%= link_to t('edit'), edit_blog_path(@blog) %> |
 <%= link_to t('back'), blogs_path %>

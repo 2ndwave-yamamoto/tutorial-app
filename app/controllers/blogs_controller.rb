@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
   def show
     @blog= Blog.find(params[:id])
     @like = Like.new
-    # impressionist(@blog, nil, unique: [:session_hash])
+    impressionist(@blog, nil, :unique => [:session_hash])
   end
 
   # GET /blogs/new
