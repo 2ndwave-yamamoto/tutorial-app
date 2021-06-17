@@ -1,0 +1,19 @@
+# == Schema Information
+#
+# Table name: lakes
+#
+#  id         :bigint           not null, primary key
+#  lakes      :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  blog_id    :integer
+#  user_id    :integer
+#
+
+one:
+  user_id: 1
+  blog_id: 1
+
+two:
+  user_id: 1
+  blog_id: 1
