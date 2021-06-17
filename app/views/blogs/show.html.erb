@@ -8,9 +8,12 @@
 <%= simple_format(@blog.body) %>
 
 <!-- いいねの表示 -->
-<%= button_to 'いいね' %>
-
-
+<% if current_user.already_liked?(@blog) %>
+  <%= button_to 'いいねを取り消す', blog_like_path(@blog), class: 'btn btn-success',method: :delete, remote: true %>
+<% else %>
+  <%= button_to 'いいね', blog_likes_path(@blog),class: 'btn btn-success', remote: true %>
+<% end %>
+いいね数：<%= @blog.likes.count %>
 <%= tag.div id: :comments_area do %>
   <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
 <% end %>

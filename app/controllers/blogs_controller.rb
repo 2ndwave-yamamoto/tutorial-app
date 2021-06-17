@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1 or /blogs/1.json
   def show
     @blog= Blog.find(params[:id])
+    @like = Like.new
     # impressionist(@blog, nil, unique: [:session_hash])
   end
 

@@ -12,9 +12,10 @@
 class Blog < ApplicationRecord
     validates :title, presence: true, length: { minimum: 1, maximum: 50}
     validates :body, presence: true, length: { minimum:10, maximum: 5000 }
-    has_many :comments
+    belongs_to :user
+    has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
-
+    has_many :liked_users, through: :likes, source: :user
     # ページカウント
     is_impressionable counter_cache: true
     

@@ -83,3 +83,6 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   end 
+
+  # jquery
+  gem 'jquery-rails'

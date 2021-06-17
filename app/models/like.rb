@@ -9,4 +9,5 @@
 #  user_id    :integer
 #
 class Like < ApplicationRecord
+    validates_uniqueness_of :blog_id, scope: :user_id
 end

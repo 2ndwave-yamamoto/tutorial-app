@@ -1,5 +1,4 @@
-class SessionsController < ApplicationController
-
+class UsersController < ApplicationController
   #ログインページ
   def new
   end
