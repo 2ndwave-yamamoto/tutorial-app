@@ -18,7 +18,7 @@ class BlogsController < ApplicationController
     # 投稿数ランキング
     @users_ranks = User.find(Blog.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
     # ユーザコメント投稿ランキング
-    @comments_user_ranks = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id)
+    @comments_user_ranks = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
   end
   # GET /blogs/1 or /blogs/1.json
   def show
@@ -96,13 +96,10 @@ class BlogsController < ApplicationController
 
     def created_at_params
       return if params["search_created_at(1i)"].blank? || params["search_created_at(2i)"].blank? || params["search_created_at(3i)"].blank?
-
       Date.new(
         params["search_created_at(1i)"].to_i,
         params["search_created_at(2i)"].to_i,
         params["search_created_at(3i)"].to_i
       )
     end
-
 end
-

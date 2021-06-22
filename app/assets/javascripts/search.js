@@ -1,10 +1,6 @@
 $(document).on('turbolinks:load', function() {
-    let search_title = document.getElementById("search_title");
-    search_title.addEventListener('input', () => {
-        // 入力された文字
-        let title = $("#search_title").val();
-        console.log(title);
-
+    $('#search_title').on('keyup', function () {
+        var title = $.trim($(this).val());
         $.ajax({
             type: 'GET', // リクエストのタイプ
             url: '/blogs', // リクエストを送信するURL
@@ -13,7 +9,13 @@ $(document).on('turbolinks:load', function() {
         })
         .done(function(data){ // dataにはレスポンスされたデータが入る
             //通信に成功した際の処理
+            $('#blogs td').remove();
             console.log(data);
-        })
+            $(data).each(function(i,blog) {
+                $('#blogs').append(
+                    `<td class=".blog">ID:${blog.id}  作成日：${blog.created_at}</td>`
+                );
+            })
+        });
     });
 });
