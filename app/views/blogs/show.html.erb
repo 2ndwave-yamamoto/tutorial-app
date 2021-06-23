@@ -1,6 +1,4 @@
 <p id="notice"><%= notice %></p>
-<!-- ログインユーザ -->
-現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
 <!-- h1タグでタイトルを表示 -->
 <h1><%= @blog.title %></h1>
 
@@ -30,5 +28,5 @@
 <br>
 
 <%= link_to t('edit'), edit_blog_path(@blog) %> |
-<%= link_to t('back'), blogs_path %>
+<%= link_to t('back'), blogs_path %> |
 <%= link_to t('logout'), logout_path, method: :delete %>

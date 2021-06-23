@@ -4,21 +4,10 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    # binding.pry
     # 記事一覧
     params.keys.each { |x| params.delete x } if params[:clear].present?
     params[:search_created_at] = created_at_params
     @blogs = Blog.search(params).order(created_at: :desc)
-    # いいねランキング
-    @likes_ranks = Blog.find(Like.group(:blog_id).order('count(blog_id) desc').limit(3).pluck(:blog_id))
-    # アクセスランキング
-    @access_ranks = Blog.order(impressions_count: 'DESC')
-    # コメントランキング
-    @comments_ranks = Blog.find(Comment.group(:blog_id).order('count(blog_id) desc').limit(3).pluck(:blog_id))
-    # 投稿数ランキング
-    @users_ranks = User.find(Blog.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
-    # ユーザコメント投稿ランキング
-    @comments_user_ranks = User.find(Comment.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
   end
   # GET /blogs/1 or /blogs/1.json
   def show

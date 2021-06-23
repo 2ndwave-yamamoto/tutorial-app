@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'users#create'
   delete '/logout',  to: 'users#destroy'
   
+  resource :rankings, only: [:index]
+  get '/ranking', to: 'rankings#index'
   root 'users#new'
-
-  
 end

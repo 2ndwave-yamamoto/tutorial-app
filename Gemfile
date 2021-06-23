@@ -86,3 +86,5 @@ group :development do
 
   # jquery
   gem 'jquery-rails'
+  # boot
+  gem 'bootstrap', '~> 4.1.1'

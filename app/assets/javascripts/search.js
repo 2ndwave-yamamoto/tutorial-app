@@ -1,21 +1,30 @@
 $(document).on('turbolinks:load', function() {
     $('#search_title').on('keyup', function () {
         var title = $.trim($(this).val());
-        $.ajax({
-            type: 'GET', // リクエストのタイプ
-            url: '/blogs', // リクエストを送信するURL
-            data:  { search_title: title }, // サーバーに送信するデータ
-            dataType: 'json' // サーバーから返却される型
-        })
-        .done(function(data){ // dataにはレスポンスされたデータが入る
-            //通信に成功した際の処理
-            $('#blogs td').remove();
-            console.log(data);
-            $(data).each(function(i,blog) {
-                $('#blogs').append(
-                    `<td class=".blog">ID:${blog.id}  作成日：${blog.created_at}</td>`
-                );
+        // タイトルが空なら何もしない
+        if (title != ""){
+            $.ajax({
+                type: 'GET', 
+                url: '/blogs',
+                data:  { search_title: title },
+                dataType: 'json' 
             })
-        });
+            .done(function(data){
+                //通信に成功した際の処理
+                $('#blogs').remove();
+                console.log(data);
+                $('.table').append(`<tbody id="blogs"></tbody>`);
+                $(data).each(function(i,blog) {
+                    $('#blogs').append(
+                        `<tr>
+                        <td>${blog.title}</td>
+                        <td><a href="http://192.168.0.165/blogs/${blog.id}">詳細</a></td>
+                        <td><a href="http://192.168.0.165/blogs/${blog.id}/edit">編集</a></td>
+                        <td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="http://192.168.0.165/blogs/${blog.id}">削除</a></td>
+                        <tr>`
+                    );
+                })
+            });
+        }
     });
 });

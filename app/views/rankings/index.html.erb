@@ -1,0 +1,50 @@
+<h1>ランキング</h1>
+
+<!-- 投稿数ランキング -->
+<table class="table">
+<caption>投稿数ランキング</caption>
+<% @users_ranks.each.with_index(1) do |blog, i| %>
+  <tr>
+    <td>第<%=i %>位</td>
+    <td>ユーザ：<%= blog.name %></td> 
+    <td>投稿数： <%= blog.blogs.count %></td>
+  </tr>
+<% end %>
+</table>
+
+<!-- コメントランキング -->
+<table class="table">
+<caption>コメントランキング</caption>
+<% @comments_ranks.each.with_index(1) do |blog, i| %>
+  <tr>
+    <td>第<%=i %>位</td>
+    <td><%= blog.title %></td>
+    <td>コメント数：<%= blog.comments.count %></td>
+    <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
+<% end %>
+</table>
+
+<!-- いいねランキング -->
+<table class="table">
+<caption>いいねランキング</caption>
+<% @likes_ranks.each.with_index(1) do |blog, i| %>
+  <tr>
+    <td>第<%=i %>位</td>
+    <td><%= blog.title %></td>
+    <td>いいね数：<%=blog.likes.count %></td>
+    <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
+<% end %>
+</table>
+
+<!-- アクセスランキング -->
+<table class="table">
+<caption>アクセスランキング</caption>
+<% @access_ranks.each.with_index(1) do |blog, i| %>
+  <tr>
+    <td>第<%=i %>位</td>
+    <td><%= blog.title %></td>
+    <td>閲覧数：<%=blog.impressions_count %></td>
+    <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
+<% end %>
+</table>
+<%= link_to t('back'), blogs_path %>

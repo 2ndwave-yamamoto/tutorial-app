@@ -30,9 +30,6 @@ class Blog < ApplicationRecord
     
     scope :search_by_title, -> (value) do
       where("`title` LIKE ?", "%#{value}%")
-      
-      respond_to do |format|
-        format.json { render json: scope }
     end
 
     scope :search_by_created_at, -> (value) do

@@ -1,6 +1,3 @@
-<!-- ログインユーザ -->
-現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
-<h1>New Blog</h1>
-
+<h1>新規作成</h1>
 <%= render 'form', blog: @blog %>
 <%= link_to t('back'), blogs_path %>
