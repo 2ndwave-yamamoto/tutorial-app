@@ -14,7 +14,6 @@ class User < ApplicationRecord
     # 
     validates :password, presence: true
     validates :name, presence: true
-    
     has_many :likes, dependent: :destroy
     has_many :blogs, dependent: :destroy
     has_many :comments, dependent: :destroy

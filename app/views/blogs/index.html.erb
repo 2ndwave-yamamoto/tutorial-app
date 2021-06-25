@@ -13,9 +13,9 @@
 <!-- ユーザがnilなら表示 -->
 <% if current_user == nil %>
   <!-- ログイン -->
-  <%= button_to "ログイン", { controller: 'users', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
+  <%= button_to "ログイン", { controller: 'sessions', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
   <!-- 新規登録 -->
-  <%= button_to "新規登録", { controller: 'users', action: 'index' }, { method: :get, class: "btn btn-primary" } %>
+  <%= button_to "新規登録", { controller: 'users', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
 <% end %>
 
 
@@ -40,17 +40,6 @@
     <% end %>
   </tbody>
 </table>
-
-<nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
-
 
 <%= link_to t('ranking'), ranking_path %> |
 <% if current_user != nil %>

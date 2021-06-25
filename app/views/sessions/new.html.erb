@@ -1,0 +1,7 @@
+<h1>ログイン</h1>
+<%= form_for(:session, url: login_path) do |f| %>
+  <%= f.text_field :name, placeholder: "ユーザ名" %>
+  <%= f.password_field :password , placeholder: "パスワード"%>
+  <%= f.submit "ログイン", class: "btn btn-primary" %>
+<% end %>
+<%= link_to t('back'), root_path %>

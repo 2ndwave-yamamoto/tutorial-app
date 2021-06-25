@@ -21,8 +21,9 @@ class BlogsController < ApplicationController
   end
 
   def edit
+
     #投稿者とログインユーザが一致しているか
-    if @blog.user_id == current_user
+    if current_user != nil && @blog.user_id == current_user.id
     else
       redirect_to "/blogs", notice: "投稿したユーザでないので編集できません"
     end
@@ -58,7 +59,7 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
-    if @blog.user_id == current_user
+    if current_user != nil && @blog.user_id == current_user.id
        @blog.destroy
        respond_to do |format|
          format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
