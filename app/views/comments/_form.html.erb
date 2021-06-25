@@ -11,6 +11,6 @@
     <%= label_tag 'comment[body]', t('activerecord.attributes.comment.body') %><%= form.text_area :body, row: 3 %>
     <%= form.hidden_field :blog_id %>
     <div class="actions">
-      <%= form.submit t("labels.comment_submit") %>
+      <%= form.submit t("labels.comment_submit"), class: "btn btn-primary"%>
     </div>
   <% end %>

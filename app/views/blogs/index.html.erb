@@ -1,12 +1,23 @@
 <p id="notice"><%= notice %></p>
-
-<h1>ブログ一覧</h1>
+<!-- ユーザがnilなら表示 -->
+<% if current_user != nil %>
   <!-- ログインユーザ -->
-  現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
+    現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
+<% end %>
+<h1>ブログ一覧</h1>
 <!-- 検索の追加 -->
 <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
-  <label for="search_title"><%= t('activerecord.attributes.blog.title') %></label>：<%= form.text_field :search_title, value: params[:search_title], remote: true %>
+  <%= form.text_field :search_title, value: params[:search_title],placeholder: "タイトル検索"%>
 <% end %>
+
+<!-- ユーザがnilなら表示 -->
+<% if current_user == nil %>
+  <!-- ログイン -->
+  <%= button_to "ログイン", { controller: 'users', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
+  <!-- 新規登録 -->
+  <%= button_to "新規登録", { controller: 'users', action: 'index' }, { method: :get, class: "btn btn-primary" } %>
+<% end %>
+
 
 <table class="table">
   <thead>
@@ -40,6 +51,9 @@
   </ul>
 </nav>
 
-<%= link_to t('new_blog'), new_blog_path %> |
+
 <%= link_to t('ranking'), ranking_path %> |
-<%= link_to t('logout'), logout_path, method: :delete %>
+<% if current_user != nil %>
+  <%= link_to t('new_blog'), new_blog_path %> |
+  <%= link_to t('logout'), logout_path, method: :delete %>
+<% end %>

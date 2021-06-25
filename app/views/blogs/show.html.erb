@@ -4,22 +4,28 @@
 
 <!-- 本文を表示 -->
 <%= simple_format(@blog.body) %>
-
-<!-- いいねの表示 -->
-<% if current_user.already_liked?(@blog) %>
-  <%= button_to 'いいねを取り消す', blog_like_path(@blog), class: 'btn btn-success',method: :delete, remote: true %>
-<% else %>
-  <%= button_to 'いいね', blog_likes_path(@blog),class: 'btn btn-success', remote: true %>
+<!-- ログインユーザがnilならいいねを非表示にする -->
+<% if current_user != nil %>
+  <!-- いいねの表示 -->
+  <% if current_user.already_liked?(@blog) %>
+    <%= button_to 'いいねを取り消す', blog_like_path(@blog), class: 'btn btn-success',method: :delete, remote: true %>
+  <% else %>
+    <%= button_to 'いいね', blog_likes_path(@blog),class: 'btn btn-success', remote: true %>
+  <% end %>
+  いいね数：<%= @blog.likes.count %>
 <% end %>
-いいね数：<%= @blog.likes.count %>
 
 <!-- コメント -->
 <%= tag.div id: :comments_area do %>
   <%= render partial: "comments/index", locals: { comments: @blog.comments } %>
 <% end %>
 
-<%= tag.div id: :comment_form do %>
-  <%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
+<!-- ログインユーザがnilならコメント投稿を非表示にする -->
+<% if current_user != nil %>
+  <!-- コメント投稿 -->
+  <%= tag.div id: :comment_form do %>
+    <%= render partial: "comments/form", locals: { comment: @blog.comments.build } %>
+  <% end %>
 <% end %>
 
 <!-- 閲覧数 -->
@@ -28,5 +34,5 @@
 <br>
 
 <%= link_to t('edit'), edit_blog_path(@blog) %> |
-<%= link_to t('back'), blogs_path %> |
+<%= link_to t('back'), root_path %> |
 <%= link_to t('logout'), logout_path, method: :delete %>

@@ -6,7 +6,7 @@
 <% @users_ranks.each.with_index(1) do |blog, i| %>
   <tr>
     <td>第<%=i %>位</td>
-    <td>ユーザ：<%= blog.name %></td> 
+    <td><%= blog.name %>さん</td> 
     <td>投稿数： <%= blog.blogs.count %></td>
   </tr>
 <% end %>
@@ -47,4 +47,4 @@
     <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
 <% end %>
 </table>
-<%= link_to t('back'), blogs_path %>
+<%= link_to t('back'), root_path %>

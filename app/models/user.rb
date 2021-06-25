@@ -11,7 +11,10 @@
 class User < ApplicationRecord
     # ハッシュ化したパスワード
     has_secure_password
-
+    # 
+    validates :password, presence: true
+    validates :name, presence: true
+    
     has_many :likes, dependent: :destroy
     has_many :blogs, dependent: :destroy
     has_many :comments, dependent: :destroy

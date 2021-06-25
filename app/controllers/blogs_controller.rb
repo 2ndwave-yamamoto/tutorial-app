@@ -1,5 +1,4 @@
 class BlogsController < ApplicationController
-  before_action :logged_in_user, only: %i[ edit update destroy ]
   before_action :set_blog, only: %i[ show edit update destroy ]
 
   # GET /blogs or /blogs.json
@@ -23,9 +22,9 @@ class BlogsController < ApplicationController
 
   def edit
     #投稿者とログインユーザが一致しているか
-    if @blog.user_id == @current_user.id
+    if @blog.user_id == current_user
     else
-      redirect_to "/blogs", :notice => "投稿したユーザでないので編集できません"
+      redirect_to "/blogs", notice: "投稿したユーザでないので編集できません"
     end
   end
 
@@ -59,14 +58,14 @@ class BlogsController < ApplicationController
 
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
-    if @blog.user_id == @current_user.id
+    if @blog.user_id == current_user
        @blog.destroy
        respond_to do |format|
          format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
          format.json { head :no_content }
       end
     else
-      redirect_to  "/blogs", :notice => "投稿したユーザでないので削除できません"
+      redirect_to  "/blogs", notice: "投稿したユーザでないので削除できません"
     end
   end
 
