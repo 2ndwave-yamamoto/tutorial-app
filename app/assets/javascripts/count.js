@@ -1,6 +1,9 @@
-$(document).on('turbolinks:load', function() {
-    $("#input-text").on("keyup", function() {
-      const countNum = $("#input-text").val().length;
-      $("#counter").text(countNum + "文字");
-    });
-  });
+const text = document.querySelector('#input-text');
+window.addEventListener('load', () => {
+  const count = text.value.length;
+  document.querySelector('#counter').textContent = count + "文字";
+});
+text.addEventListener('keyup', () => {
+  const count = text.value.length;
+  document.querySelector('#counter').textContent = count + "文字";
+});

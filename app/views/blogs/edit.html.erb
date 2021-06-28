@@ -1,6 +1,3 @@
 <h1>記事編集</h1>
 <%= render 'form', blog: @blog %>
-<%= link_to t('show'), @blog %> |
-<%= link_to t('back'), root_path %> |
-<%= link_to t('logout'), logout_path, method: :delete %>
-
+<%= render 'blogs/edit_link' %>

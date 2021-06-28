@@ -1,8 +1,6 @@
-<h1>ランキング</h1>
-
 <!-- 投稿数ランキング -->
+<h1>投稿数ランキング</h1>
 <table class="table">
-<caption>投稿数ランキング</caption>
 <% @users_ranks.each.with_index(1) do |blog, i| %>
   <tr>
     <td>第<%=i %>位</td>
@@ -13,8 +11,8 @@
 </table>
 
 <!-- コメントランキング -->
+<h1>コメントランキング</h1>
 <table class="table">
-<caption>コメントランキング</caption>
 <% @comments_ranks.each.with_index(1) do |blog, i| %>
   <tr>
     <td>第<%=i %>位</td>
@@ -25,8 +23,8 @@
 </table>
 
 <!-- いいねランキング -->
+<h1>いいねランキング</h1>
 <table class="table">
-<caption>いいねランキング</caption>
 <% @likes_ranks.each.with_index(1) do |blog, i| %>
   <tr>
     <td>第<%=i %>位</td>
@@ -37,8 +35,8 @@
 </table>
 
 <!-- アクセスランキング -->
+<h1>アクセスランキング</h1>
 <table class="table">
-<caption>アクセスランキング</caption>
 <% @access_ranks.each.with_index(1) do |blog, i| %>
   <tr>
     <td>第<%=i %>位</td>
@@ -47,4 +45,4 @@
     <td><%= blog.created_at.strftime("%Y/%m/%d") %></td>
 <% end %>
 </table>
-<%= link_to t('back'), root_path %>
+<%= link_to t('back'), root_path, class: "btn btn-primary" %>

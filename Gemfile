@@ -88,3 +88,5 @@ group :development do
   gem 'jquery-rails'
   # boot
   gem 'bootstrap', '~> 4.1.1'
+
+  gem 'kaminari'

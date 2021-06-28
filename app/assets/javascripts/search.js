@@ -18,9 +18,9 @@ $(document).on('turbolinks:load', function() {
                     $('#blogs').append(
                         `<tr>
                         <td>${blog.title}</td>
-                        <td><a href="http://192.168.0.165/blogs/${blog.id}">詳細</a></td>
-                        <td><a href="http://192.168.0.165/blogs/${blog.id}/edit">編集</a></td>
-                        <td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="http://192.168.0.165/blogs/${blog.id}">削除</a></td>
+                        <td><a href="http://192.168.0.165/blogs/${blog.id}" class="btn btn-primary">詳細</a></td>
+                        <td><a href="http://192.168.0.165/blogs/${blog.id}/edit" class="btn btn-primary">編集</a></td>
+                        <td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="http://192.168.0.165/blogs/${blog.id}" class="btn btn-primary">削除</a></td>
                         <tr>`
                     );
                 })

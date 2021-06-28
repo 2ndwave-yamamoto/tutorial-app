@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
     params.keys.each { |x| params.delete x } if params[:clear].present?
     params[:search_created_at] = created_at_params
     @blogs = Blog.search(params).order(created_at: :desc)
+    @blogs = @blogs.page(params[:page]).per(7)
   end
   # GET /blogs/1 or /blogs/1.json
   def show

@@ -13,4 +13,22 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap"; 
+ @import "bootstrap";
+body {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-control {
+    width: 30vw;
+}
+
+.text-right {
+    display: flex;
+    padding: 5px;
+    justify-content: flex-end;
+}
+
+.form {
+    display: flex;
+}

@@ -1,25 +1,17 @@
 <p id="notice"><%= notice %></p>
-<!-- ユーザがnilなら表示 -->
-<% if current_user != nil %>
-  <!-- ログインユーザ -->
-    現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
-<% end %>
 <h1>ブログ一覧</h1>
+<%= render 'blogs/user' %>  
+<%= render 'blogs/login' %>
+
 <!-- 検索の追加 -->
+<div class="form">
 <%= form_with(path: :blogs_path, local: true, method: :get) do |form| %>
-  <%= form.text_field :search_title, value: params[:search_title],placeholder: "タイトル検索"%>
+  <%= form.text_field :search_title, value: params[:search_title],placeholder: "タイトル検索" %>
 <% end %>
-
-<!-- ユーザがnilなら表示 -->
-<% if current_user == nil %>
-  <!-- ログイン -->
-  <%= button_to "ログイン", { controller: 'sessions', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
-  <!-- 新規登録 -->
-  <%= button_to "新規登録", { controller: 'users', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
-<% end %>
-
-
-<table class="table">
+<%= javascript_include_tag "search.js" %>
+<%= link_to t('ranking'), ranking_path, class: "btn btn-primary" %>
+</div>
+<table class="table"> 
   <thead>
     <tr>
       <th>タイトル</th>
@@ -33,16 +25,12 @@
       <tr>
         <!-- タイトルを追加 -->
         <td><%= blog.title %></td>
-        <td><%= link_to t('show'), blog %></td>
-        <td><%= link_to t('edit'), edit_blog_path(blog) %></td>
-        <td><%= link_to t('destroy'), blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('show'), blog ,class: "btn btn-primary"%></td>
+        <td><%= link_to t('edit'), edit_blog_path(blog),class: "btn btn-primary" %></td>
+        <td><%= button_to t('destroy'), blog, class: "btn btn-primary", method: :delete ,data: {confirm: "削除しますか？"}%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('ranking'), ranking_path %> |
-<% if current_user != nil %>
-  <%= link_to t('new_blog'), new_blog_path %> |
-  <%= link_to t('logout'), logout_path, method: :delete %>
-<% end %>
+<%= paginate @blogs %>
+<%= render 'blogs/blogs_link' %>

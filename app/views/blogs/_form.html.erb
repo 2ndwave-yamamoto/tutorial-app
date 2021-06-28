@@ -1,8 +1,8 @@
+<%= render 'blogs/user' %>
 <%= form_with(model: blog, local: true) do |form| %>
   <% if blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
-
       <ul>
       <% blog.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,11 +11,12 @@
     </div>
   <% end %>
   <!-- タイトルを入力するinputタグを表示 -->
-  <label for="blog_title">タイトル</label><%= form.text_field :title ,id: "title" %>
-
+  <label for="blog_title"></label><%= form.text_field :title ,id: "title",placeholder: "タイトル" %>
+  <br>
   <!-- 本文入力するtextareタグを表示 -->
-  <label for="blog_body">本文</label><%= form.text_area :body, id: "input-text", rows: 5 %>
+  <label for="blog_body"></label><%= form.text_area :body, id: "input-text", rows: 5 ,placeholder: "本文"%>
   <p id="counter">0文字</p>
+  <%= javascript_include_tag "count.js" %>
   <div class="actions">
     <%= form.submit class: "btn btn-primary"%>
   </div>
