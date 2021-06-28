@@ -1,0 +1,4 @@
+<!-- 一覧ページ -->
+<% if current_user != nil && request.path == root_path %>
+  <%= link_to t('new_blog'), new_blog_path, class: "btn btn-primary" %>
+<% end %>

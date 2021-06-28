@@ -1,0 +1,11 @@
+<!-- ユーザがnilなら表示 -->
+<div class="text-right">
+    <% if current_user == nil %>
+        <!-- ログイン -->
+        <%= button_to "ログイン", { controller: 'sessions', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
+        <!-- 新規登録 -->
+        <%= button_to "新規登録", { controller: 'users', action: 'new' }, { method: :get, class: "btn btn-primary" } %>
+    <% else %>
+        <%= button_to t('logout'), logout_path, { method: :delete, class: "btn btn-primary" } %>
+    <% end %>
+</div>

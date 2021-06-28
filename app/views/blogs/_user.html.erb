@@ -1,0 +1,5 @@
+<!-- ユーザがnilなら表示 -->
+<% if current_user != nil %>
+  <!-- ログインユーザ -->
+    現在ログイン中のユーザ：<strong><%=current_user.name %></strong>
+<% end %>
