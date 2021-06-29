@@ -15,5 +15,12 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(id: session[:user_id])
       end
     end
-    
+  
+    # URL直接打ち込み
+    # ユーザがログインしていない場合一覧に戻る
+    def no_user
+      if current_user == nil
+        redirect_to root_path
+      end
+    end
 end

@@ -8,3 +8,49 @@ textarea#input-text {
 p {
     font-size: 30px;
 }
+
+.text-right input.btn.btn-primary {
+    margin-left: 5px;
+}
+
+.form input#search_title {
+    margin-right: 10px;
+}
+
+.form a.btn.btn-primary {
+    margin-bottom: 10px;
+}
+
+.text-right strong {
+    font-size: 20px;
+}
+
+div#comments_area table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.actions input.btn.btn-primary {
+    display: block;
+    margin-left: 39vw;
+    margin-top: 1vh;
+    width: 10vw;
+    height: 5vh;
+}
+
+label {
+    margin-left: 10vw;
+    font-size: 18px;
+}
+
+.text-center input#title,textarea#input-text {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 40vw;
+    height: 6vh;
+    font-size: 24px;
+}
+.text-center textarea#input-text {
+    height: 35vh;
+}

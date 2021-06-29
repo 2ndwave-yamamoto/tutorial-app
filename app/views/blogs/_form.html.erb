@@ -10,11 +10,12 @@
       </ul>
     </div>
   <% end %>
+  <div class="text-center">
   <!-- タイトルを入力するinputタグを表示 -->
   <label for="blog_title"></label><%= form.text_field :title ,id: "title",placeholder: "タイトル" %>
-  <br>
   <!-- 本文入力するtextareタグを表示 -->
   <label for="blog_body"></label><%= form.text_area :body, id: "input-text", rows: 5 ,placeholder: "本文"%>
+  </div>
   <p id="counter">0文字</p>
   <%= javascript_include_tag "count.js" %>
   <div class="actions">

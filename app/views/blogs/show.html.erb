@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
 <%= render 'blogs/user' %>
 <%= render 'blogs/login' %>
+<!-- 閲覧数 -->
+<div class="text-right">
+<strong>閲覧数:
+<%= @blog.impressions_count %>
+</strong>
+</div>
 <!-- h1タグでタイトルを表示 -->
 <h1><%= @blog.title %></h1>
 <!-- 本文を表示 -->
-<%= simple_format(@blog.body) %>
+  <%= simple_format(@blog.body) %>
 <!-- ログインユーザがnilならいいねを非表示にする -->
 <% if current_user != nil %>
   <!-- いいねの表示 -->
@@ -14,7 +20,9 @@
     <%= button_to 'いいね', blog_likes_path(@blog),class: 'btn btn-success', remote: true %>
   <% end %>
 <% end %>
-  いいね数：<%= @blog.likes.count %>
+<div class=text-right>
+  <p>いいね数：<%= @blog.likes.count %></p>
+</div>
 
 
 <!-- コメント -->
@@ -30,8 +38,6 @@
   <% end %>
 <% end %>
 
-<!-- 閲覧数 -->
-<strong>閲覧数:</strong>
-<%= @blog.impressions_count %>
-<br>
+
+
 <%= render 'blogs/show_link' %>

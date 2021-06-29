@@ -1,3 +1,43 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.login .btn.btn-primary {
+    width: 15vw;
+    height: 5vh;
+    display: block;
+    margin-left: 50%;
+    margin-top: 20px;
+
+}
+
+input#user_name {
+    width: 30vw;
+    height: 5vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+    margin-top: 150px;
+}
+
+input#user_password {
+    width: 30vw;
+    height: 5vh;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+h1 {
+    margin: 40px;
+    padding: 40px;
+    text-align: center;
+}
+
+.back a.btn.btn-primary {
+    width: 5vw;
+    height: 5vh;
+    margin-top: 20px;
+}
