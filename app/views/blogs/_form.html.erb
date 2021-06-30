@@ -16,8 +16,9 @@
   <!-- 本文入力するtextareタグを表示 -->
   <label for="blog_body"></label><%= form.text_area :body, id: "input-text", rows: 5 ,placeholder: "本文"%>
   </div>
-  <p id="counter">0文字</p>
-  <%= javascript_include_tag "count.js" %>
+  <div class ="text-right">
+    <p id="counter"></p>
+  </div>
   <div class="actions">
     <%= form.submit class: "btn btn-primary"%>
   </div>

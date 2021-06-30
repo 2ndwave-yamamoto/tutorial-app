@@ -1,0 +1,23 @@
+<h1>復元<h1>
+<table class="table"> 
+    <thead>
+        <tr>
+            <th>タイトル</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @boxs.each do |box| %>
+            <tr>
+                <!-- ブログタイトル -->
+                <td><%= box.title %></td>
+                <!-- 復元 -->
+                <td><%= link_to "復元", box, class: "btn btn-primary", method: :patch %></td>
+                <!-- 削除 -->
+                <td><%= link_to "削除", box, class: "btn btn-primary", method: :delete ,data: {confirm: "削除しますか？"} %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

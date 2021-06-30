@@ -4,6 +4,7 @@
 #
 #  id                  :bigint           not null, primary key
 #  body(本文)          :text(65535)      not null
+#  deleted_at          :string(255)
 #  impressions_count   :integer          default(0)
 #  title(タイトル)     :string(255)      not null
 #  created_at          :datetime         not null

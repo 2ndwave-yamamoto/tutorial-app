@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :comments
   
   resources :users
+  resources :boxs
   resource :rankings, only: [:index]
   get '/ranking', to: 'rankings#index'
   root 'blogs#index'

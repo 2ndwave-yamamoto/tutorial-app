@@ -61,10 +61,10 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1 or /blogs/1.json
   def destroy
     if current_user != nil && @blog.user_id == current_user.id
-       @blog.destroy
-       respond_to do |format|
-         format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
-         format.json { head :no_content }
+      @blog.destroy
+      respond_to do |format|
+        format.html { redirect_to blogs_url, notice: "Blog was successfully destroyed." }
+        format.json { head :no_content }
       end
     else
       redirect_to  "/blogs", notice: "投稿したユーザでないので削除できません"
@@ -75,7 +75,7 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      @blog = Blog.find_by(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

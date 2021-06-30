@@ -90,3 +90,5 @@ group :development do
   gem 'bootstrap', '~> 4.1.1'
 
   gem 'kaminari'
+
+  gem 'paranoia'
